@@ -35,6 +35,23 @@ def predict():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+    crop_data = pd.read_csv("crop_info.csv")
+
+@app.route('/crop-info', methods=['GET'])
+def get_crop_info():
+    crop_name = request.args.get('name', '').strip().lower()
+    if not crop_name:
+        return jsonify({'error': 'Crop name is required'}), 400
+
+    match = crop_data[crop_data['name'].str.lower() == crop_name]
+
+    if match.empty:
+        return jsonify({'error': 'Crop not found'}), 404
+
+    crop_info = match.iloc[0].to_dict()
+    return jsonify(crop_info)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
