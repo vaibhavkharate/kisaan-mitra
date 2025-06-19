@@ -42,11 +42,13 @@ const CropRecommendation = () => {
           <div key={key} className="col-span-1">
             <label className="block text-sm font-semibold mb-1 capitalize">{key}</label>
             <input
-              type="number"
-              name={key}
-              value={value}
-              onChange={handleChange}
-              required
+                key={key}
+                name={key}
+                type="number"
+                placeholder={key.toUpperCase()}
+                value={formData[key]}
+                onChange={handleChange}
+                required
               className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
