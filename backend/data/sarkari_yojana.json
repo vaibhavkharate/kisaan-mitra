@@ -1,0 +1,62 @@
+[
+  {
+    "id": "pm-kisan",
+    "title": "Pradhan Mantri Kisan Samman Nidhi (PM‑KISAN)",
+    "category": "Income Support",
+    "state": "All India",
+    "target": "Small & Marginal Farmers",
+    "benefit": "₹6,000/year in 3 installments",
+    "description": "Provides direct income support of ₹2,000 every 4 months to eligible farmer families via DBT.",
+    "link": "https://pmkisan.gov.in/"
+  },
+  {
+    "id": "pm-fasal-bima",
+    "title": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "category": "Insurance",
+    "state": "All India",
+    "target": "All Farmers",
+    "benefit": "Low premium—2% (Kharif), 1.5% (Rabi), 5% (Commercial)",
+    "description": "Crop insurance coverage for yield loss due to natural calamities, with quick claim settlement.",
+    "link": "https://pmfby.gov.in/"
+  },
+  {
+    "id": "pm-kusum",
+    "title": "PM‑KUSUM Scheme",
+    "category": "Irrigation / Renewable Energy",
+    "state": "All India",
+    "target": "Farmers installing solar irrigation pumps",
+    "benefit": "60% subsidy on solar pumps; 30% state support; farmer pays 40%",
+    "description": "Promotes solar-powered irrigation, reducing diesel dependency and enabling sale of extra power.",
+    "link": "https://en.wikipedia.org/wiki/PM_Kusum_Scheme"
+  },
+  {
+    "id": "pm-aasha",
+    "title": "PM‑AASHA (Annadata Aay SanraksHan Abhiyan)",
+    "category": "Price Support",
+    "state": "All India",
+    "target": "Crop Growers",
+    "benefit": "Ensures government procurement at MSP, paying deficiency amount to farmers.",
+    "description": "Umbrella scheme to guarantee the minimum support price (MSP) via various procurement channels.",
+    "link": "https://en.wikipedia.org/wiki/Farmer_Income_Protection_Scheme_(PM_AASHA)"
+  },
+  {
+    "id": "e-nam",
+    "title": "e‑NAM (National Agriculture Market)",
+    "category": "Market Facilitation",
+    "state": "All India",
+    "target": "Farmers & Traders",
+    "benefit": "Access to 1000+ mandis with transparent online pricing and bidding.",
+    "description": "Nationwide electronic trading platform for agricultural produce to promote price transparency.",
+    "link": "https://en.wikipedia.org/wiki/E-NAM"
+  },
+  {
+    "id": "kisan-credit-card",
+    "title": "Kisan Credit Card (KCC)",
+    "category": "Credit & Insurance",
+    "state": "All India",
+    "target": "Farmers",
+    "benefit": "Short-term crop loans with interest subsidy + insurance cover.",
+    "description": "Provides timely credit to farmers at low interest rates along with accidental insurance.",
+    "link": "https://en.wikipedia.org/wiki/Kisan_Credit_Card"
+  }
+]
