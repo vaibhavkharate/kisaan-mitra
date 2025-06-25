@@ -1,4 +1,4 @@
-
+// server.js
 import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
@@ -7,24 +7,25 @@ import { fileURLToPath } from 'url';
 import mandiPricesRoute from "./routes/mandiPrices.js";
 import newsRoute from './routes/news.js';
 
-const router = express.Router();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Fix for ES Module __dirname
+// Fix __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Middlewares
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-
+// Routes
 app.use("/api/mandi-prices", mandiPricesRoute);
-app.use('/api/news', newsRoute);
+app.use("/api/news", newsRoute);
 
-app.get("/", (req, res) => res.send("Kisaan Mitra Backend Running ✅"));
-// API Route for schemes
+// Root route
+app.get("/", (req, res) => res.send("🌾 Kisaan Mitra Backend Running ✅"));
+
+// ✅ Sarkari Yojana Static JSON Route
 app.get('/api/schemes', (req, res) => {
   try {
     const dataPath = path.join(__dirname, 'data', 'sarkari_yojana.json');
@@ -32,15 +33,17 @@ app.get('/api/schemes', (req, res) => {
     const schemes = JSON.parse(rawData);
     res.json(schemes);
   } catch (err) {
+    console.error("Error reading schemes data:", err);
     res.status(500).json({ error: 'Failed to load schemes data.' });
   }
 });
 
-router.post("/api/feedback", (req, res) => {
+// ✅ Feedback Route (Writes to feedback.json)
+app.post("/api/feedback", (req, res) => {
   const { name, email, message } = req.body;
-
-  if (!name || !email || !message)
+  if (!name || !email || !message) {
     return res.status(400).json({ error: "Missing fields" });
+  }
 
   const newEntry = {
     name,
@@ -49,20 +52,21 @@ router.post("/api/feedback", (req, res) => {
     timestamp: new Date().toISOString(),
   };
 
-  // Save to JSON file (or later MongoDB)
-  const file = "./feedback.json";
+  const file = path.join(__dirname, "feedback.json");
   let existing = [];
+
   if (fs.existsSync(file)) {
     const raw = fs.readFileSync(file);
     existing = JSON.parse(raw);
   }
+
   existing.push(newEntry);
   fs.writeFileSync(file, JSON.stringify(existing, null, 2));
 
   res.json({ success: true });
 });
 
+// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
-
