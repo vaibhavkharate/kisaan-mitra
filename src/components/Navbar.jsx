@@ -26,6 +26,9 @@ const Navbar = () => {
         <Link to="/" className="text-2xl font-bold text-white">
           Kisaan Mitra 🌾
         </Link>
+        <Link to="/register" className="hover:text-yellow-300 transition duration-200">
+          Register
+        </Link>
 
         {/* Language Switcher */}
         <select

@@ -6,6 +6,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import mandiPricesRoute from "./routes/mandiPrices.js";
 import newsRoute from './routes/news.js';
+import authRoutes from './routes/auth.js';
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,6 +23,7 @@ app.use(express.json());
 // Routes
 app.use("/api/mandi-prices", mandiPricesRoute);
 app.use("/api/news", newsRoute);
+app.use('/api/auth', authRoutes);
 
 // Root route
 app.get("/", (req, res) => res.send("🌾 Kisaan Mitra Backend Running ✅"));
