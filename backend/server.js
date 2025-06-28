@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 import mandiPricesRoute from "./routes/mandiPrices.js";
 import newsRoute from './routes/news.js';
 import authRoutes from './routes/auth.js';
-
+import connectDB from "./config/db.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,6 +15,12 @@ const PORT = process.env.PORT || 5000;
 // Fix __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
+dotenv.config();
+
+connectDB();
+
 
 // Middleware
 app.use(cors());

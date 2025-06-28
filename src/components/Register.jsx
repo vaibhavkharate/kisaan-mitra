@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Include Link
 
 const Register = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -32,12 +33,15 @@ const Register = () => {
 
     if (!validate()) return;
 
+    setLoading(true);
     try {
       await axios.post("http://localhost:5000/api/auth/register", form);
       alert("✅ Registration successful");
       navigate("/login");
     } catch (err) {
       setApiError(err.response?.data?.error || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,11 +89,20 @@ const Register = () => {
 
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          disabled={loading}
+          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 disabled:opacity-50"
         >
-          Register
+          {loading ? "Registering..." : "Register"}
         </button>
       </form>
+
+      {/* ✅ Link to Login */}
+      <p className="text-sm mt-4 text-center">
+        Already have an account?{" "}
+        <Link to="/login" className="text-green-600 underline hover:text-green-800">
+          Login here
+        </Link>
+      </p>
     </div>
   );
 };
